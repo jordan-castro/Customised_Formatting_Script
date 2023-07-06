@@ -1,0 +1,7 @@
+env/
+nsa/
+__pycache__
+windows/
+.docx
+.html
+*.zip
