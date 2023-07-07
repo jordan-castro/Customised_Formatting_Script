@@ -156,7 +156,7 @@ input_file = options.input
 convert_files = options.convert
 
 # Convert files if neccesarry
-if convert_files.strip() == "1":
+if convert_files.strip() == "1": # This is the argument from above ^
     file_name = f'{input_file.split(".")[0]}_temp.html'
     if convert.convert_file(input_file, file_name):
         input_file = file_name
