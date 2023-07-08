@@ -41,7 +41,7 @@ import convert
 import args
 import os
 
-TRANS_MARKER = "****"
+TRANS_MARKER = "**"
 
 def translate(string):
     translator = Translator()
@@ -206,7 +206,6 @@ for element in page_breaks:
     vocabulary = []
     vocabulary = [(start+i, lfl(bold_text[i]), 
                    lfl(translation[i])) for i in range(len(translation))]
-    print(vocabulary)
     element.append(add_vocabulary(vocabulary, start))
     # Number bold elements
     for el in bold_elements:
