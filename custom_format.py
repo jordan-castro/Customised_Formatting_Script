@@ -180,7 +180,7 @@ word_section.append(soup.new_tag('br', attrs={
     }))
 
 # Find the page breaks and check if there any of the 'bold' words on said page.
-page_breaks = soup.find_all(lambda tag: tag.has_attr('style') and 'page-break-before:always' in tag['style'])
+page_breaks = soup.find_all(lambda tag: tag.has_attr('style') and 'page-break-before' in tag['style'])
 start = 1
 last_bold_element = None
 for element in page_breaks:
@@ -206,6 +206,7 @@ for element in page_breaks:
     vocabulary = []
     vocabulary = [(start+i, lfl(bold_text[i]), 
                    lfl(translation[i])) for i in range(len(translation))]
+    print(vocabulary)
     element.append(add_vocabulary(vocabulary, start))
     # Number bold elements
     for el in bold_elements:
