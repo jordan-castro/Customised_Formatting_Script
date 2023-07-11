@@ -41,7 +41,10 @@ import convert
 import args
 import os
 
-TRANS_MARKER = "**"
+TRANS_MARKER = " ** "
+COM_WORDS = [
+    'Dovremmo',
+]
 
 def translate(string):
     translator = Translator()
@@ -59,6 +62,8 @@ def translate(string):
 def master_translation(words):
     string_ = TRANS_MARKER.join(words)
     result = translate(string_)
+    split_words = result.split(TRANS_MARKER)
+
     return result.split(TRANS_MARKER)
 
 
@@ -204,8 +209,13 @@ for element in page_breaks:
     translation = master_translation(bold_text)
     # Add vocabulary
     vocabulary = []
-    vocabulary = [(start+i, lfl(bold_text[i]), 
-                   lfl(translation[i])) for i in range(len(translation))]
+
+    print(page_breaks.index(element))
+    print()
+
+    for i in range(len(translation)):
+        vocabulary.append((start+i, lfl(bold_text[i]), lfl(translation[i])))
+
     element.append(add_vocabulary(vocabulary, start))
     # Number bold elements
     for el in bold_elements:
